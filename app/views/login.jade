@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		title Log In
+		link(rel='stylesheet', href='/css/style.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		block scripts
+			script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js')
+			script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+			script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+			script(src='/js/index.js')
+	body
+		.background-image
+		.login-page
+			.content
+				.container
+					.form
+						p(style='color:red') #{sms}
+						form.login-form(name='login',method='POST',action='overview')
+							input(name='inID', type='text', placeholder='instructor ID', required='')
+							input(name='pass',type='password', placeholder='password',required='')
+							button(type='submit') login
+							p.message
+								| Not registered?
+								a(href='signin')    Create an account

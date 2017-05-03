@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title
+    script.
+      function show(e) {
+      var display = e.options[e.selectedIndex].value;
+      var showBox = document.getElementById('showBox');
+      if(display=="2") showBox.style.display = "block";
+      else showBox.style.display = "none";
+      }
+  body
+    select(onchange='show(this)')
+      option(value='1') 1
+      option(value='2') 2
+      option(value='3') 3
+    #showBox.hidden
+      input(type='text', name='blank')
+      | input
+  style.
+    .hidden {
+    display: none;
+    }

@@ -1,0 +1,56 @@
+extends layout_pdf.jade
+block content
+	div
+		left
+			&nbsp &nbsp &nbsp &nbsp &nbsp
+			img(src='http://www.cusc.chula.ac.th/wordpress/wp-content/uploads/2014/06/Logo-chula.jpg', width='100', height='150')
+		.pull-right
+			label.h4
+				b NAME OF REQUESTER _________________________
+				br
+				br
+				b POSITION ____________________________________
+				br
+				br
+				b REQUESTED _________________________________
+				br
+				br
+				b ISSUE DATE __________________________________
+				br
+				br
+				b TOPIC _______________________________________
+				br
+	h4 
+		b CHULALONGKORN
+		br 
+		&nbsp &nbsp &nbsp 
+		b UNIVERSITY
+	br
+	br
+	.table-responsive
+		table.table.table-striped
+			thead
+				tr
+					th #
+					th Student ID
+					th Student Name
+					th GPAX
+					th E-mail
+			tbody
+				each stu in student
+					tr
+						td 
+						td=stu.sid
+						td=stu.fname+' '+stu.lname
+						td=stu.GPAX
+						td=stu.email
+	br
+	br
+	div
+		.pull-right
+			label.h5
+				b CERTIFIED TRUE COPY __________________
+				br
+				br
+				b REGISTRAR (____________________________)
+	

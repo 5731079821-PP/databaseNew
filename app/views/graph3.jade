@@ -1,0 +1,135 @@
+extends layout.jade
+block content
+    style.
+      .ct-label{
+        font-size:2rem;
+        fill: rgba(255,255,255,1);
+        color: rgba(0,0,0,5);
+        line-height: 5;  }
+    link(rel='stylesheet', href='//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css')        
+    script(src='//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js')
+    .container-fluid
+      .row(style='height:300px;')
+        .col-sm-4(style='background-color:#595a6d; height:300px;')
+          #goi.ct-chart.ct-perfect-fourth
+            label(for='goi') Gender
+        .col-sm-4(style='background-color:#9aa099;height:300px')
+          #goi2.ct-chart.ct-perfect-fourth
+            label(for='goi2') GPAX of Student
+        .col-sm-4(style='background-color:#abc9bd;height:300px')
+          #goi3.ct-chart.ct-perfect-fourth
+            label(for='goi3') Widthdraw Statistics
+      .row(style='height:450px;')
+        .col-sm-6(style='background-color:#d7a29e; height:450px')
+          #goi4.ct-chart.ct-perfect-fourth
+            label(for='goi4') GPAX of Student
+        .col-sm-6(style='background-color:#e8d8bf; height:450px')
+          img(src='/img/carlen.png', alt='carlendar', width='500px', height='450px')
+          
+        
+        
+  
+    script.
+      //goi
+      var chart = new Chartist.Pie('#goi', {
+        series: [42, 55, 3],
+        labels: ['Female','Male', 'Unknown']
+      }, {
+        donut: true,
+        showLabel: true,
+        hight: 300,
+        width: 400
+      });
+      //goi2
+      new Chartist.Line('#goi2', {
+        labels: [1,2,3,4],
+        series: [
+          [1,4,8,2]
+        ]
+      }, {
+        low: 0,
+        showArea: true
+      });
+      //goi3
+      new Chartist.Bar('#goi3', {
+        labels: ['Year1', 'Year2', 'Year3', 'Year4'],
+        series: [
+          [20,10 , 5,2],
+          [15, 20, 5, 1],
+          [2, 5, 4, 1]
+        ]
+      }, {
+        stackBars: true,
+      
+      }).on('draw', function(data) {
+        if(data.type === 'bar') {
+          data.element.attr({
+            style: 'stroke-width: 30px'
+          });
+        }
+      });
+      //goi4
+      new Chartist.Bar('#goi4', {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        series: [
+          [5, 4, 3, 7, 5, 10, 3],
+          [3, 2, 9, 5, 4, 6, 4]
+        ]
+      }, {
+        seriesBarDistance: 10,
+        reverseData: true,
+        hieght:300,
+        horizontalBars: true,
+        axisY: {
+          offset: 70
+        }
+      });
+
+
+      chart.on('draw', function(data) {
+        if(data.type === 'slice') {
+          // Get the total path length in order to use for dash array animation
+          var pathLength = data.element._node.getTotalLength();
+
+          // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+          data.element.attr({
+            'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+          });
+
+          // Create animation definition while also assigning an ID to the animation for later sync usage
+          var animationDefinition = {
+            'stroke-dashoffset': {
+              id: 'anim' + data.index,
+              dur: 1000,
+              from: -pathLength + 'px',
+              to:  '0px',
+              easing: Chartist.Svg.Easing.easeOutQuint,
+              // We need to use `fill: 'freeze'` otherwise our animation will fall back to initial (not visible)
+              fill: 'freeze'
+            }
+          };
+
+          // If this was not the first slice, we need to time the animation so that it uses the end sync event of the previous animation
+          if(data.index !== 0) {
+            animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';
+          }
+
+          // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+          data.element.attr({
+            'stroke-dashoffset': -pathLength + 'px'
+          });
+
+          // We can't use guided mode as the animations need to rely on setting begin manually
+          // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
+          data.element.animate(animationDefinition, false);
+        }
+      });
+
+      // For the sake of the example we update the chart every time it's created with a delay of 8 seconds
+      chart.on('created', function() {
+        if(window.__anim21278907124) {
+          clearTimeout(window.__anim21278907124);
+          window.__anim21278907124 = null;
+        }
+        window.__anim21278907124 = setTimeout(chart.update.bind(chart), 10000);
+      });

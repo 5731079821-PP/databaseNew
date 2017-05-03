@@ -1,0 +1,94 @@
+extends layout.jade
+block content
+  style.
+    a {color: black;margin: 5px; text-decoration: none;}
+
+    .dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+    }
+
+    .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    }
+
+    .dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+    }
+    .hiddengoi {
+      display: none;
+    }
+    
+  script.
+    function show(e) {
+    var display = e.options[e.selectedIndex].value;
+    var showBox = document.getElementById('showBox');
+    if(display=="type") showBox.style.display = "block";
+      else showBox.style.display = "none";
+    }  
+  form(name='search', method='POST', action='behave')
+    table(style='border-collapse: collapse; ')
+      tr
+        td(colspan='4', style='padding: 0px; text-align: left; ')
+          span.w3-margin-right Filter:
+      tr
+        td(style='padding: 2px 2px')
+          .w3-dropdown-hover
+            select.w3-button(name='select',onchange='show(e)')
+              option(selected='', disabled='')  All
+              option(value='id')  Student ID
+              option(value='name') Student Name
+              option(value='assist')  Advisee
+              option(value='score')  Range Score
+              //- option(value='type')  Type
+        td
+          #showBox.hiddengoi
+            .w3-dropdown-hover
+              select.w3-button(name='type')
+                option(selected='', disabled='')  All
+                option(value='probation')  Probation
+                option(value='sick') Sick Leave
+                option(value='exchange')  Exchange Student
+                option(value='drop')  Drop
+                option(value='absent') Absent
+              
+        td
+          input(name='by',type='text',placeholder='Search...')
+        td(style='padding: 2px 2px')
+          .w3-dropdown-hover
+            select.w3-button(name='order')
+              option(selected='', disabled='')  Sort by..
+              option(value='d')  Decending
+              option(value='a')  Ascending    
+        td
+          input.w3-button(value='Search', type='submit', style='border:1px solid #ddd;')
+        td(style='padding: 2px 2px')
+          i.fa.fa-file-pdf-o(style='font-size:36px;color:red')
+
+
+  h5.sub-header All
+  .table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th Student ID
+          th Student Name
+          th Score
+          th GPAX
+          th History
+      tbody
+        
+        each stu in student
+          tr
+            td=stu.sid
+            td=stu.fname+' '+stu.lname
+            td=stu.behaviorScore
+            td=stu.GPAX
+            td 
+              a(href="#{'bscore?id='+stu.sid+'&bescore='+stu.behaviorScore}") 
+                span.glyphicon.glyphicon-list-alt
+    h3(style='color:#ff0000; text-align:center;') #{errormsg}

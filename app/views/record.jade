@@ -1,0 +1,235 @@
+doctype html
+html
+  title personal information
+  link(rel='icon', href='/img/form.png')
+  meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='/css/w3.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet', type='text/css', href='/css/app.css')
+  link(href='https://fonts.googleapis.com/css?family=Mitr', rel='stylesheet')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  style(type='text/css').
+    body{
+    font-family: 'Mitr', sans-serif;
+    background-color:
+    }
+    header{
+    background-color: gray;
+    color: #fff;
+    }
+    td{
+    padding: 15px 15px 15px 15px;
+    }
+    table{
+    align-items: center;
+    align-content: center;
+    text-align: left;
+    color: #ab274f;
+    }
+    .info td:nth-child(odd){
+    color: #000;
+    }
+    .info td:nth-child(even){
+    color: #aaa;
+    }
+    .detail tr:nth-child(odd){
+    background-color: rgb(249,247,249)
+    }
+    .detail tr:nth-child(even){
+    background-color: #fff;
+    }
+  body
+    // sub header
+    div(style='padding: 10px;')  
+    .col-sm-2
+      button.w3-button(style='border:1px solid #aaa; border-radius: 25px;', onclick="window.location.href='registrar'")
+        i.fa.fa-angle-left
+        |  back
+    .col-sm-9(style='font-size: 35px; text-align: center;') Registrar Record
+    .col-sm-1
+      
+    br
+    // detail
+    .col-sm-3(style='padding-left: 50px; padding-top: 40px;')
+      img(src='/img/paopao.jpg', alt='student pic', width='200px', height='250px')
+    .col-sm-9(style='padding-top: 40px; font-size: 20px; ')
+      table.info(style='text-align: left; padding-top:  40px;')
+        tr
+          td Name
+          td(colspan='2') paopao
+          td Surname
+          td(colspan='2') C
+          td
+            a(href='files/basicInfo_adviser.pdf')
+              i.fa.fa-file-pdf-o(style='font-size:40px; color:red;')
+        tr
+          td Gender
+          td Female
+          td Student ID
+          td(colspan='1') 7731073921
+          td Admission year: 2577
+        tr
+          td Faculty
+          td(colspan='2') Engineering
+          td Department
+          td(colspan='2') Computer Engineering
+        
+    br
+    .col-sm-6(style='padding-top: 40px; font-size: 20px;  text-align: center; padding-bottom: 50px;')
+      button.w3-button(style='border:1px solid #aaa; border-radius: 25px; ')  Course B.E 2554 Course ID 121100  
+    div(style='text-align: center;')
+      table.detail(align='center')
+        tr(style='background-color: #eaa; color:#fff')
+          td COURSE NO
+          td ABBREVAITED NAME
+          td CREDIT
+          td GRADE
+          td status
+          td(width='200px') note
+        tr(style='color: #eaa; font-style: italic;')
+          td 2014
+          td(colspan='5', align='left') 1st semester
+        tr
+          td 210316
+          td ENG DRAWING
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2301107
+          td CALCULUS I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2302127
+          td GEN CHEM
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2302163
+          td GEN CHEM LAB
+          td 1
+          td A
+          td requried
+          td
+        tr
+          td 2304107
+          td GEN PHYS I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2304183
+          td GEN PHYS LAB I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 5500111
+          td EXP ENG I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td(colspan='6')
+            table(align='center', style='background-color: #aaa; color:#aaa;')
+              tr(style='background-color: #ddd')
+                td CA
+                td CG
+                td GPA
+                td CAX
+                td CGX
+                td GPAX
+                td GPX
+              tr(style='background-color: #eee')
+                td 17
+                td 17
+                td 4.00
+                td 17
+                td 17
+                td 4.00
+                td 68
+        tr
+        tr(style='color: #eaa; font-style: italic;')
+          td 2014
+          td(colspan='5', align='left') 2st semester
+        tr
+          td 210316
+          td ENG DRAWING
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2301107
+          td CALCULUS I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2302127
+          td GEN CHEM
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2302163
+          td GEN CHEM LAB
+          td 1
+          td A
+          td requried
+          td
+        tr
+          td 2304107
+          td GEN PHYS I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 2304183
+          td GEN PHYS LAB I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td 5500111
+          td EXP ENG I
+          td 3
+          td A
+          td requried
+          td
+        tr
+          td(colspan='6')
+            table(align='center', style='background-color: #aaa; color:#aaa;')
+              tr(style='background-color: #ddd')
+                td CA
+                td CG
+                td GPA
+                td CAX
+                td CGX
+                td GPAX
+                td GPX
+              tr(style='background-color: #eee')
+                td 17
+                td 17
+                td 4.00
+                td 17
+                td 17
+                td 4.00
+                td 68
+    div(style='padding: 15px;')

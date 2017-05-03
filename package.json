@@ -1,0 +1,23 @@
+{
+  "name": "DATABASE",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "async": "^2.3.0",
+    "body-parser": "~1.13.0",
+    "compression": "~1.5.0",
+    "cookie-parser": "~1.4.3",
+    "dialog": "^0.2.0",
+    "express": "^4.15.2",
+    "express-session": "^1.7.6",
+    "express-validator": "~2.14.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.6.0",
+    "passport": "latest",
+    "passport-local": "latest",
+    "string-to-json": "^0.1.0",
+		"jade-reporting": "latest"
+   }
+}

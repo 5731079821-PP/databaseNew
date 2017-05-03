@@ -1,0 +1,79 @@
+﻿extends layout_pdf.jade
+block content
+	p(align='center')
+		img(src='http://www.cusc.chula.ac.th/wordpress/wp-content/uploads/2014/06/Logo-chula.jpg', width='100', height='150')
+	h4
+		center
+			b CHULALONGKORN 
+			br
+			b UNIVERSITY
+	br
+	h4
+		center 
+			b ระเบียนประวัตินิสิต
+	br
+	br
+	div
+		.pull-left
+			label.h4
+				b เลขประจำตัวนิสิต
+			label.h4
+				&nbsp #{student.sid}
+		.pull-right
+			label.h4
+				b ชือ - นามสกุล 
+			label.h4
+				&nbsp #{student.gender == "M" ? "นาย" : "นางสาว"} 
+				|#{student.fname}
+				|#{student.lname}
+	br
+	br
+	br
+	u.h4
+		b ประวัติส่วนตัว
+	br
+	br
+	h4
+		b เลขประจำตัวประชาชน
+		&nbsp #{student.idNumber}
+	br
+	h4
+		b เพศ
+		&nbsp #{student.gender == "M" ? "ชาย" : "หญิง"} 
+	br
+	h4
+		b วันเกิด 
+		&nbsp #{student.dateOfBirth}
+	br
+	h4
+		b อีเมล 
+		&nbsp #{student.email}
+	br
+	h4
+		b ศาสนา
+		&nbsp #{student.religion}
+	br
+	h4
+		b สัญชาติ
+		&nbsp #{student.race}
+	br
+	h4
+		b เชื้อชาติ
+		&nbsp #{student.nationality}
+	br
+	h4
+		b ชื่อ บิดา
+		&nbsp #{student.father}
+	br
+	h4
+		b ชื่อ มารดา
+		&nbsp #{student.mother}
+	br
+	h4
+		b ผู้ปกครอง
+		&nbsp #{student.parent}
+	br
+	h4
+		b ที่อยู่
+		&nbsp #{student.address}
+	br

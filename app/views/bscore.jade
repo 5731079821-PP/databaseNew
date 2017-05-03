@@ -1,0 +1,51 @@
+doctype
+html
+  title login as an executive
+  link(rel='icon', href='/img/head.png')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  style.
+    .td{
+    text-align:center;
+    }
+  link(rel='stylesheet', href='/css/w3.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet', type='text/css', href='/css/app.css')
+  link(rel='stylesheet', type='text/css', href='/css/ourcss.css')
+  link(href='https://fonts.googleapis.com/css?family=Mitr', rel='stylesheet')
+  body
+    div(style='padding: 10px;')  
+    .col-sm-2
+      button.w3-button(style='border:1px solid #aaa; border-radius: 25px;', onclick="window.location.href='behave'")
+        i.fa.fa-angle-left
+        |  back
+    .col-sm-9(style='font-size: 35px; text-align: center;') Behavior Score Record
+    br
+    div(style='padding: 10px;')  
+    // FILTER BOX
+    form(action='')
+      table(style='border-collapse: collapse; ', align='center')
+        tr
+          td 
+            h2 #{sid}
+        tr
+          td
+            center
+              i.fa.fa-file-pdf-o(style='font-size:36px;color:red')
+            // <a href="files/forexecutive.pdf"><i class="fa fa-file-pdf-o" style="font-size:36px;color:red"></i></a>
+      // TABLE
+      div(style='margin-top: 20px;')
+        table(style='border-collapse: collapse; border: 1px solid #000;', align='center')
+          thead
+            tr(style='background-color: rgb(255,210,227); border: 1px solid #000; border-bottom-color: white')
+              td Rule ID 
+              td Rule Name
+              td Date
+              td Time
+          tbody
+            each stu in student
+              tr.view
+                td=stu.ruleId
+                td=stu.name
+                td=stu.date
+                td=stu.time
+    h4(style='color:#000; text-align:center;') #{total}

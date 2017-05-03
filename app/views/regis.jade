@@ -1,0 +1,158 @@
+extends layout.jade
+block content
+  style.
+    sup {
+      vertical-align: super;
+      font-size: smaller;
+    }
+    a {color: black;margin: 5px; text-decoration: none;}
+
+    .dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+    }
+
+    .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    }
+
+    .dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+    }
+    .hiddengoi {
+      display: none;
+    }
+    .th {
+      text-align:center;
+    }
+  script.
+    function show(e) {
+    var display = e.options[e.selectedIndex].value;
+    var showBox = document.getElementById('showBox');
+    var showBox1 = document.getElementById('showBox1');
+    if(display=="year") {
+    showBox.style.display = "block";
+    showBox1.style.display = "none";}
+    else if(display=="gpax") {
+      showBox.style.display = "none";
+      showBox1.style.display = "block";}
+    else {
+      showBox.style.display = "none";
+      showBox1.style.display = "none";
+      }
+    }
+  form(name='search', method='POST', action='registrar')
+    table(style='border-collapse: collapse; ')
+      tr
+        td(colspan='4', style='padding: 0px; text-align: left; ')
+          span.w3-margin-right Filter:
+      tr
+        td(style='padding: 2px 2px')
+          .w3-dropdown-hover
+            select.w3-button(name='select', onchange='show(this)')
+              option(selected='', disabled='')  All
+              option(value='id')  Student ID
+              option(value='name') Student Name
+              option(value='assist')  Advisee
+              option(value='year')  Year
+              option(value='gpax')  GPAX
+        td  
+          .w3-dropdown-hover
+            select#showBox.w3-button.hiddengoi(name='year')
+              option(selected='', disabled='') select year
+              option(value='=1')  1
+              option(value='=2')  2
+              option(value='=3')  3
+              option(value='=4')  4
+              option(value='>4')  Super Senior
+        td  
+          .w3-dropdown-hover
+            select#showBox1.w3-button.hiddengoi(name='grade')
+              option(selected='', disabled='')  Compare..
+              option(value='=')  Equals to
+              option(value='<')  Less than
+              option(value='<=')  Less than or Equals
+              option(value='>')  Greater than
+              option(value='>=')  Greater than or Equals
+        td
+          input(name='by',type='text',placeholder='Search...')
+        td(style='padding: 2px 2px')
+          .w3-dropdown-hover
+            select.w3-button(name='order')
+              option(selected='', disabled='')  Sort by..
+              option(value='d')  Decending
+              option(value='a')  Ascending    
+        td
+          input.w3-button(value='Search', type='submit', style='border:1px solid #ddd;')
+
+  h5.sub-header All
+  .table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th(style='text-align:center',rowspan='2') Student Name
+          th(style='text-align:center',rowspan='2') Student ID
+          th(style='text-align:center',rowspan='2') GPAX
+          th(style='text-align:center',colspan='3') 1
+            sup st
+            | Year 
+          th(style='text-align:center',colspan='3') 2
+            sup nd
+            | Year 
+          th(style='text-align:center',colspan='3') 3
+            sup th
+            | Year 
+          th(style='text-align:center',colspan='3') 4
+            sup th
+            | Year 
+          th(style='text-align:center',rowspan='3') Records
+        tr
+          th 1
+            sup st
+          th 2
+            sup nd
+          th Summer
+          th 1
+            sup st
+          th 2
+            sup nd
+          th Summer
+          th 1
+            sup st
+          th 2
+            sup nd
+          th Summer
+          th 1
+            sup st
+          th 2
+            sup nd
+          th Summer        
+          
+      tbody
+        each stu in student
+          tr
+            td=stu.fname+' '+stu.lname
+            td=stu.sid
+            td=stu.GPAX
+            td=stu.y1_1st
+            td=stu.y1_2nd
+            td=stu.y1_S
+            td=stu.y2_1st
+            td=stu.y2_2nd
+            td=stu.y2_S
+            td=stu.y3_1st
+            td=stu.y3_2nd
+            td=stu.y3_S
+            td=stu.y4_1st
+            td=stu.y4_2nd
+            td=stu.y4_S
+            td
+              a(href="#{'record/pdf?sid='+stu.sid}")
+                span.glyphicon.glyphicon-list-alt(aria-hidden='true')
+            
+          
+      

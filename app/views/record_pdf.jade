@@ -1,0 +1,114 @@
+extends layout_pdf.jade
+block content
+	div
+		center
+			img(src='http://www.cusc.chula.ac.th/wordpress/wp-content/uploads/2014/06/Logo-chula.jpg', width='80', height='130')
+	center
+			label.h4
+				b CHULALONGKORN
+				br
+				b UNIVERSITY
+				br
+				br
+				label.h5
+						u
+							b STUDENT REPORT
+	div
+		.pull-left
+			label.h4
+				b Name 
+				|#{student.fname}
+				|#{student.lname}
+				br
+				b Student ID. &nbsp
+				|#{student.sId}
+				br
+				b Status &nbsp
+				|#{student.detail}
+				br
+				b Gender &nbsp
+				|#{student.gender == "M" ? "ชาย" : "หญิง"}
+				br
+				b Faculty &nbsp
+				|#{student.FacultyName}
+		.pull-right
+			label.h4
+				b Idenrification No. &nbsp
+				|#{student.idNumber}
+				br
+				b Amdission &nbsp
+				|#{student.enrollYear}
+				br
+				b Date of birth &nbsp
+				|#{student.date}
+				br
+				b Email &nbsp
+				|#{student.email}
+				br
+				b Department &nbsp
+				|#{student.departmentName}
+	br
+	br
+	br
+	br
+	br
+	br
+	h4
+		u 
+			b Registered courses
+	br
+	
+	if(record == "null")
+		b null
+	
+	-record.forEach(function(obj_year,year){
+		-obj_year.forEach(function(obj_term,term){
+			h4
+				u
+					b !{term} / !{year}
+			.table-responsive
+				table.table.table-stiped   
+					tr
+						th COURSE NO
+						th ABBREVIATED NAME
+						th CREDIT
+						th GRADE
+					-obj_term.forEach(function(grade) { 
+						tr
+							td #{grade.courseId}
+							td #{grade.name}
+							td #{grade.weight}
+							td #{grade.grade}
+					-})  
+			-obj_term.slice(0,1).forEach(function(grade) {
+				tr
+					center
+						b CA = &nbsp
+						td #{grade.CA}
+						&nbsp &nbsp &nbsp &nbsp
+						b CG = &nbsp
+						td #{grade.CG}
+						&nbsp &nbsp &nbsp &nbsp
+						b GPA = &nbsp
+						td #{grade.GPA}
+						&nbsp &nbsp &nbsp &nbsp
+						b CAX = &nbsp
+						td #{grade.CAX}
+						&nbsp &nbsp &nbsp &nbsp
+						b CGX = &nbsp
+						td #{grade.CGX}
+						&nbsp &nbsp &nbsp &nbsp
+						b GPAX = &nbsp
+						td #{grade.GPAX}
+						&nbsp &nbsp &nbsp &nbsp
+						b GPX = &nbsp
+						td #{grade.GPX}
+						&nbsp &nbsp &nbsp &nbsp
+					
+			-})
+		
+		-})
+		
+		br
+		br
+	-})

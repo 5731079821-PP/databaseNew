@@ -1,0 +1,52 @@
+doctype
+html
+  title login as an executive
+  link(rel='icon', href='/img/head.png')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='/css/w3.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet', type='text/css', href='/css/app.css')
+  link(rel='stylesheet', type='text/css', href='/css/ourcss.css')
+  link(href='https://fonts.googleapis.com/css?family=Mitr', rel='stylesheet')
+  body
+    div(style='padding: 10px;')  
+    .col-sm-2
+      button.w3-button(style='border:1px solid #aaa; border-radius: 25px;', onclick="window.location.href='absent'")
+        i.fa.fa-angle-left
+        |  back
+    .col-sm-9(style='font-size: 35px; text-align:center') 
+      h1 Leave Of Absent Record
+  
+    
+    br
+    div(style='padding: 10px;')  
+    // FILTER BOX
+    form(action='')
+      table(style='border-collapse: collapse; ', align='center')  
+        tr
+          td 
+            h2 Student ID: #{id}
+          td
+            center
+              //- a(href="#{'miss?id='+stu.sid}") 
+              a(href="'/absent/pdf?sid='+#{id}}")
+                i.fa.fa-file-pdf-o(style='font-size:40px; color:red;')
+          
+      // TABLE
+      div(style='margin-top: 20px;')
+        table(style='border-collapse: collapse; border: 1px solid #000;', align='center')
+          thead
+            tr(style='background-color: rgb(255,210,227); border: 1px solid #000; border-bottom-color: white')
+              th Reason           
+              th Course ID 
+              th Semester
+              th Year
+          tbody
+            each stu in student
+              tr.view
+                td=stu.reason
+                td=stu.courseId
+                td=stu.semester
+                td=stu.year
+                
+    h4(style='color:#000; text-align:center;') #{mes}          

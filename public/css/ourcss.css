@@ -1,0 +1,35 @@
+/*import font*/
+/*@import url(https://fonts.googleapis.com/css?family=Mitr);*/
+
+body{
+font-family: 'Mitr', sans-serif;
+background-color: 
+}
+header{
+background-color: gray;
+color: #fff;
+}
+td{
+padding: 15px 15px 15px 15px;
+}
+.icon-table{
+align-items: center;
+align-content: center;
+text-align: center;
+}
+
+.view:nth-child(odd){
+background-color: rgb(249,247,249)
+}
+.view:nth-child(even){
+background-color: #fff;
+}
+.try th{
+border-color: white;
+}
+.word:nth-child(odd){
+color: #000;
+}
+.word:nth-child(even){
+color: #aaa;
+}

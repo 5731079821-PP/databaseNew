@@ -1,0 +1,93 @@
+extends layout.jade
+block content
+  style.
+    a {color: black;margin: 5px; text-decoration: none;}
+
+    .dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+    }
+
+    .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    }
+
+    .dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+    }
+    .hiddengoi {
+      display: none;
+    }
+  script.
+    function show(e) {
+      var display = e.options[e.selectedIndex].value;
+      var showBox = document.getElementById('showBox');
+      if(display=="course") showBox.style.display = "block";
+      else showBox.style.display = "none";
+    } 
+
+  form(name='search', method='POST', action='allpersonal')
+    table(style='border-collapse: collapse; ')
+      tr
+        td(colspan='4', style='padding: 0px; text-align: left; ')
+          span.w3-margin-right Filter:
+      tr
+        td(style='padding: 2px 2px')
+          .w3-dropdown-hover
+            select.w3-button(name='select',onchange='show(this)')
+              option(value='all')  All
+              option(value='sid')  Student ID
+              option(value='name') Student Name
+              option(value='assist')  Advisee
+              option(value='course')  Course Name
+        td
+          #showBox.hiddengoi
+            .w3-dropdown-hover
+              select.w3-button(name='course')
+                option(selected='', disabled='')  Course
+                each sub in subj  
+                  option(value='#{sub.courseId}')=sub.name
+            
+        td
+          input(name='by',type='text',placeholder='Search...')
+                
+        td(style='padding: 2px 2px')
+          .w3-dropdown-hover
+            select.w3-button(name='order')
+              option(selected='', disabled='')  Sort by..
+              option(value='d')  Decending
+              option(value='a')  Ascending                    
+        td
+          input.w3-button(value='Search', type='submit', style='border:1px solid #ddd;')
+        td
+          a.btn.btn-info.btn-lg(href='/allpersonal/pdf')
+            span.glyphicon.glyphicon-file
+            |  PDF
+
+
+  h5.sub-header All
+  .table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th #
+          th Student ID
+          th Student Name
+          th Name
+          th GPAX
+      tbody
+        each stu in student
+          tr
+            td 
+            td=stu.sid
+            td=stu.fname+' '+stu.lname
+            td 
+              a(href="#{'profile?id='+stu.sid}") 
+                span.glyphicon.glyphicon-list-alt
+            td=stu.GPAX
+
+  h3(style='color:#ff0000; text-align:center;') #{errormsg}

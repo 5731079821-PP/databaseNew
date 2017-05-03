@@ -1,0 +1,93 @@
+doctype
+html
+  title personal information
+  link(rel='icon', href='/img/information.png')
+  meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(href='https://fonts.googleapis.com/css?family=Mitr', rel='stylesheet')
+  link(rel='stylesheet', href='/css/w3.css')
+  link(rel='stylesheet', type='text/css', href='/css/app.css')
+  link(rel='stylesheet', type='text/css', href='/css/ourcss.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  body
+    div(style='padding: 10px;')  
+    // SUB HEADER
+    div(style='padding: 10px;')  
+    .col-sm-2
+      button.w3-button(style='border:1px solid #aaa; border-radius: 25px;', onclick="window.location.href='allpersonal'")
+        i.fa.fa-angle-left
+        |  back
+    .col-sm-9(style='font-size: 35px; text-align: center;') ข้อมูลส่วนตัว
+    .col-sm-1
+       a.btn.btn-info.btn-lg(href='/personal/pdf')
+        span.glyphicon.glyphicon-file
+        |  PDF
+    // DETAIL
+    .col-sm-3(style='padding-left: 50px; padding-top: 40px;')
+      img(src='images/paopao.jpg', alt='student pic', width='200px', height='250px')
+    .col-sm-9(style='padding-top: 40px; font-size: 20px; ')
+      table(style='text-align: left; padding-top:  40px;')
+        tr
+          td.word ชื่อ
+          td.word(colspan='2') #{indiv.fname}
+          td.word นามสกุล
+          td.word(colspan='2') #{indiv.lname}
+        tr
+          td.word เพศ
+          td.word #{gender}
+          td.word รหัสนิสิต
+          td.word(colspan='1') #{indiv.sid}
+          td.word Admission year: #{indiv.enrollYear}
+        tr
+          td.word คณะ
+          td.word(colspan='2') #{indiv.facultyName}
+          td.word ภาควิชา
+          td.word(colspan='2') #{indiv.departmentName}
+        tr
+          td.word สัญชาติ
+          td.word #{indiv.nationality}
+          td.word เชื้อชาติ
+          td.word #{indiv.race}
+          td.word ศาสนา
+          td.word #{indiv.religion}
+        tr
+          td.word รหัสบัตรประชาชน
+          td.word(colspan='2') #{indiv.idNumber}
+          td.word วันเกิด
+          td.word(colspan='2') #{indiv.bdate}
+        tr
+          td.word เบอร์โทรศัพท์
+          td.word(colspan='2') no have in database
+          td.word Email
+          td.word(colspan='2') #{indiv.email}
+        tr
+          td.word ที่อยู่
+          td.word(colspan='5') #{indiv.address}
+        tr
+          td
+          td(colspan='5', style='color:#aaa')
+            //- | ถนนพญาไท แขวงวังใหม่ เขตปทุมวัน
+            //- | กรุงเทพมหานคร 10330
+        tr
+          td.word บิดาชื่อ
+          td.word(colspan='5') #{indiv.father}
+        tr
+          td.word มารดาชื่อ
+          td.word(colspan='5') #{indiv.mother}
+        tr
+          td.word ผู้ปกครอง
+          td.word(colspan='5') #{indiv.parent}
+        //- there is no data in our database and ER diagram so i cut it out na ja
+        //- tr
+        //-   td.word เบอร์โทรศัพท์
+        //-   td.word(colspan='2') 0XX-XX X-XXXX
+        //-   td.word Email
+        //-   td.word bankhun@example.com
+    .col-sm-3
+    .col-sm-9(style='padding-top: 40px; font-size: 20px; padding-bottom: 100px')
+      button.w3-button(style='border:1px solid #aaa; border-radius: 7px;') ประวัติการแข่งขัน
+      button.w3-button(style='border:1px solid #aaa; border-radius: 7px;') ผลการเรียนทุกภาคเรียน
+      button.w3-button(style='border:1px solid #aaa; border-radius: 7px;', onclick="window.location.href='regisinfo.html'") ประวัติการลงทะเบียนเรียน
+    div(style='padding: 15px;')
